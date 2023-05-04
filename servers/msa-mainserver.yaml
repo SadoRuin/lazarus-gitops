@@ -20,3 +20,14 @@ spec:
         image: docker.io/sadoruin/msa-mainserver:v1
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: secret-volume
+          mountPath: /config
+          readOnly: true
+        env:
+        - name: SPRING_CONFIG_LOCATION
+          value: "file:/config/application-mainserver.yml"
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: mainserver-secret
