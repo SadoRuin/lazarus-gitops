@@ -1,0 +1,22 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-mainserver
+  namespace: default
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: msa-mainserver
+  template:
+    metadata:
+      labels:
+        app: msa-mainserver
+    spec:
+      containers:
+      - name: msa-mainserver
+        image: docker.io/sadoruin/msa-mainserver:v1
+        ports:
+        - containerPort: 8080
