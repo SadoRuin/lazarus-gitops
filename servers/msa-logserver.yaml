@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-logserver
+  namespace: default
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: msa-logserver
+  template:
+    metadata:
+      labels:
+        app: msa-logserver
+    spec:
+      containers:
+      - name: msa-logserver
+        image: docker.io/sadoruin/msa-logserver:1
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: secret-volume
+          mountPath: /config
+          readOnly: true
+        env:
+        - name: SPRING_CONFIG_LOCATION
+          value: "file:/config/application-logserver.yml"
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: logserver-secret

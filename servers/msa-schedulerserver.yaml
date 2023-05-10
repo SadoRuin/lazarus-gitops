@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-schedulerserver
+  namespace: default
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: msa-schedulerserver
+  template:
+    metadata:
+      labels:
+        app: msa-schedulerserver
+    spec:
+      containers:
+      - name: msa-schedulerserver
+        image: docker.io/sadoruin/msa-schedulerserver:1
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: secret-volume
+          mountPath: /config
+          readOnly: true
+        env:
+        - name: SPRING_CONFIG_LOCATION
+          value: "file:/config/application-scheduler.yml"
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: scheduler-secret
