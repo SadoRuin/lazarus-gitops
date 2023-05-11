@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: msa-schedulerserver
-        image: docker.io/sadoruin/msa-schedulerserver:2
+        image: docker.io/sadoruin/msa-schedulerserver:3
         ports:
         - containerPort: 8080
         volumeMounts:
