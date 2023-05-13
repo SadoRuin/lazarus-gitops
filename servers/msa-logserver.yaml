@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: msa-logserver
-        image: docker.io/sadoruin/msa-logserver:5
+        image: docker.io/sadoruin/msa-logserver:6
         ports:
         - containerPort: 8080
         volumeMounts:
