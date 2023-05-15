@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-front
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: admin-front
+  template:
+    metadata:
+      labels:
+        app: admin-front
+    spec:
+      containers:
+      - name: admin-front
+        image: docker.io/sadoruin/msa-admin-front:1
+        ports:
+        - containerPort: 80
