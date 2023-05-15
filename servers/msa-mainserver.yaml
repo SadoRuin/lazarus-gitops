@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: msa-mainserver
-        image: docker.io/sadoruin/msa-mainserver:9
+        image: docker.io/sadoruin/msa-mainserver:10
         ports:
         - containerPort: 8080
         volumeMounts:
