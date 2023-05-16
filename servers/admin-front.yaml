@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: admin-front
-        image: docker.io/sadoruin/msa-admin-front:10
+        image: docker.io/sadoruin/msa-admin-front:11
         ports:
         - containerPort: 80
