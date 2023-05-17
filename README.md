@@ -1,2 +1,2 @@
-# MSA (가제)
+# LAZARUS
 ## Kubernetes Manifests
